@@ -1,0 +1,154 @@
+<!--
+	File:					index.html
+	
+	Homepage of the AirBNB, index.html serves to provide information to entice the reader
+	to stay at the Rosella Estate BnB.
+	Best viewed in chrome, and firefox, however firefox has issues with caching images from css files. This usually
+	fixes itself if the user clicks where the image is supposed to be or refreshes the page with the image on screen.
+	
+	Developer:				Bradley Turner
+	Date of Creation:		24/08/16
+	
+	Last Modified:			19/10/16
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<meta charset="UTF-8">
+		<title>Airhead BnB - Rosella Estate</title>
+	</head>
+	
+	<body>
+		<!-- 
+		The following div, provides the background img for the webpage.
+		It acheives this through an effect called parallax scrolling.-->
+		<div class="parallaxScroll">
+			<div id="instruction">
+				<span id="caption">
+					<!-- In-page link, in-case user cannot scroll -->
+					<a id="captionText" href="#down">SCROLL DOWN</a>
+				</span>
+			</div>
+		</div>
+		
+		
+		<!-- Main body of the webpage, providing all details about the accommodation -->
+		<div class="middle" id="down">
+			<h1 id="pageTitle">rosella estate bnb</h1>
+			
+			<!-- 
+			The following div establishes a horizontal navigation bar providing
+			links to the two .xml files and to an external webpage; airheaduk
+			Ironically this is also the name of the ficitional accommodation 
+			management business ment for this assignment -->
+			<div class="navContainer">
+				<ul class="navPane" id="navTop">
+					<li><a href="http://airheaduk.co.uk">AirHead BnB</a></li>
+					<li><a href="http://www.blogtyrant.com/best-about-us-pages/">About Us</a></li>
+					<li><a href="survey.html">Leave a Review</a></li>
+				</ul>
+			
+			</div>
+		
+		
+			<p id="briefDescription">
+				Rosella Estate is an American-style Victorian mansion. It is set surrounded by magnificent gardens that
+				will allow you to enjoy a relaxing stay. Lovingly restored, the estate offers you the
+				opportunity for a luxurious weekend getaway, or to enjoy our relaxing home with our budget rooms.
+				The house itself is set amongst the picturesque Adelaide hills. This region is renowned for its fine dining and 
+				for producing some of the best red wines in Australia. <br>
+				There now is an opportunity to stay whether for a short stay or little while longer. Rosella Estate BnB offers 
+				accomodation for everyone. The estate offers both luxury and budget accommodation, panoramic views or private courtyards.
+				With the finest of linen to match the elegance of the estate you can expect comfort and luxury.
+				A seasonal breakfast prepared by our in house staff will greet you, with local wine tasting tours
+				also on offer, come and be swept away by the magic of the Adelaide Hills.
+				
+			</p>
+			
+			<!-- The following div houses the information regarding the luxury accommodation -->
+			<div id="luxury">
+				<h2 class="subtitles"><a class="subtitles" href="luxury.xml">Luxury Accommodation</a></h2>
+				
+				<!-- using a class provides reuseable code and formatting for the budget rooms -->
+				<ul class="rooms">
+					<li>
+						<img id="luxury1" src="images/luxuryRoom1.jpg" alt="photo could not be displayed"></img>
+						<!-- Sourced from http://housely.com/wp-content/uploads/2016/06/bedroom-decorating-ideas-four-poster-bed.jpg-->
+						<p>	The Penthouse with amazing panoramic view, private bathroom with spa bath.
+							His and her robes to wear with the fluffist of towels. Although part of this mansion,
+							it still provides that honeymoon privacy.
+						</p>
+					</li>
+					<li>
+						<img id="luxury1" src="images/luxuryRoom2.jpg" alt="photo could not be displayed"></img>
+						<!-- Sourced from http://www.charliemorganyoga.com/wp-content/uploads/2015/08/brimstone-spa-bath.jpg -->
+						<p>	Imagine opening the door to your suite to see what luxury really looks like; four poster
+							beds, quality linen and tasteful furnishings. Well these rooms are for you then. With
+							private courtyards, water features, and luxury day beds that will make for that perfect country escape. 
+							Each suite is equipped with their own stunning bathroom that exudes quality and comfort.
+						</p>
+					</li>
+				</ul>
+			</div>
+			
+			
+			<!-- The following div houses the information regarding the budget accommodation -->
+			<div id="budget">
+				<h2 class="subtitles"><a class="subtitles" href="budget.xml">Budget Accommodation</a></h2>
+				<ul class="rooms">
+					<li>
+						<img id="luxury1" src="images/budgetRoom1.jpg" alt="Budget Bedroom"></img>
+						<!-- Sourced from http://www.swellendamlodge.com/wp-content/uploads/2014/12/slider-rooms03new.jpg -->
+						<p>	Located on either the ground or first floor, our beautiful rooms take in the spectacular views. Although there is
+							a shared bathroom, these rooms are still highly sought after. The garden access room located on the 
+							ground floor allows for you to come and go with out disturbing the others. These rooms have been designed 
+							with comfort in mind and all at an affordable price.
+						</p>
+					</li>
+				</ul>
+			</div>
+			
+			
+			<hr id="divider">
+			<p id="finalP">
+				Whatever room you are after you will still have full access to all the facilities including; 
+				the swimming pool, tennis courts, wi-fi, and common rooms located on the ground floor.
+				<br>
+				Wine and food tours of the local vineyards can also be arranged.
+			</p>
+			
+			
+			<hr>
+		</div>
+		
+		<div class="navContainer" id ="navBottom">
+		
+			<ul class="navPane">
+				<li><a href="index.html#down">Home</a></li>
+				<li><a href="budget.xml">Budget Suites</a></li>
+				<li><a href="luxury.xml">Luxury Suites</a></li>
+				<li><a href="http://www.blogtyrant.com/best-about-us-pages/">About Us</a></li>
+				<li><a href="http://www.blogtyrant.com/best-contact-us-pages/">Contact</a></li>
+				<li><a href="https://media.termsfeed.com/pdf/terms-and-conditions-template.pdf">Terms and Conditions</a></li>
+				<li><a href="https://www.visser.com.au/blog/generic-privacy-policy-for-australian-websites/">Privacy Policy</a></li>
+				
+			</ul>
+		</div>	
+		<!-- 
+		Another parallax scrolling effect used to create some whitespace at 
+		the bottom of the page -->
+		<div class="parallaxScroll" id="smallBottom"></div>
+		
+		
+		<!-- The footer of the page, providing copyright information -->
+		<div class="footer">
+			<span style="vertical-align:top;padding-right:20px;font-size:12px;">&copy 2016 - Bradley Turner, brad.c.turner1997@gmail.com</span>
+		</div>
+		
+
+		
+
+		
+	</body>
+</html>	

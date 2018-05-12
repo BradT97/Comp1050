@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet href="styles.xsl" type="text/xsl" ?>
+<!--
+	File name:		luxury.xml
+	Developer:		Bradley Turner
+	Date Created:	24/08/16
+	
+	Last modified:	19/10/16
+-->
+
+<!--Inline DTD -->
+<!DOCTYPE rooms
+[
+	<!ELEMENT rooms (room+)>
+	<!ATTLIST rooms type (luxury | budget) #REQUIRED>
+	<!ATTLIST rooms available (CDATA) #REQUIRED>
+	
+		<!ELEMENT room (name, people, cost, location, photo_file, guest_reviews_link, description?, wifi?, fourPostBed?, gardenAccess, vineyardTour)*>
+			<!-- MANDATORY-->
+			<!ELEMENT name (#PCDATA)>	
+			
+			<!ELEMENT people EMPTY> 
+			<!ATTLIST people capacity CDATA #REQUIRED>
+			
+			<!ELEMENT cost EMPTY>
+			<!ATTLIST cost perNight (100|250) #REQUIRED>
+			
+			<!ELEMENT location EMPTY> 
+			<!ATTLIST location story (ground | floor1 | floor2) #REQUIRED>
+			
+			<!ELEMENT photo_file (#PCDATA)>
+			
+			<!ELEMENT guest_reviews_link (#PCDATA)> 
+			
+			<!-- ADDITIONAL EXTRAS>-->
+			<!ELEMENT description (#PCDATA)> 
+			
+			<!ELEMENT wifi EMPTY>
+			<!ATTLIST wifi inc (yes|no) #IMPLIED>
+			
+			<!ELEMENT fourPostBed EMPTY>
+			<!ATTLIST fourPostBed inc (yes|no) #IMPLIED>
+			
+			<!ELEMENT gardenAccess EMPTY>
+			<!ATTLIST gardenAccess inc (yes|no) #REQUIRED>
+			
+			<!ELEMENT vineyardTour (#PCDATA)>
+			<!ATTLIST vineyardTour inc (yes|no) #REQUIRED>
+			<!ATTLIST vineyardTour extraCharge (0|50|100) #REQUIRED>
+
+	
+	
+	<!-- MANDATORY ENTITY-->		
+	<!ENTITY AC "air conditioning">
+	<!ENTITY PB "private bathroom">
+	
+]>
+<!--XML TEMPLATE-->
+<rooms type="luxury" available="3">
+	
+	<room>
+		<name>Northern Rosella</name>
+		<people capacity="2" />
+		<cost perNight="250" />
+		<location story="floor2" />
+		<photo_file>images/luxuryRoom3.jpg</photo_file>
+		<guest_reviews_link>https://www.tripadvisor.com.au/</guest_reviews_link>
+		<description>
+			The Penthouse with amazing panoramic view, &PB; with spa bath.
+			His and her robes to wear with the fluffist of towels. Although part of this mansion,
+			it still provides that honeymoon privacy. Comes with &AC;.
+		</description>
+		<wifi inc="yes" />
+		<fourPostBed inc="yes" />				
+		<gardenAccess inc="no" />
+		<vineyardTour inc="yes" extraCharge="100">Adelaide Hills - All-day wine tasting tour</vineyardTour>
+	</room>
+
+	<room>
+		<name>Western Rosella</name>
+		<people capacity="5" />
+		<cost perNight="250" />
+		<location story="ground" />
+		<photo_file>images/luxuryRoom2.jpg</photo_file>
+		<guest_reviews_link>https://www.tripadvisor.com.au/</guest_reviews_link>
+		<description>
+			Imagine opening the door to your suite to see what luxury really looks like; four poster
+			beds, quality linen and tasteful furnishings. Well these rooms are for you then. With
+			private courtyards, water features, and luxury day beds that will make for that perfect country escape. 
+			Each suite is equipped with their own stunning &PB; that exudes quality and comfort. Also included is
+			a half day wine tasting tour. Comes with &AC;.
+		</description>
+		<wifi inc="yes" />
+		<fourPostBed inc="no" />				
+		<gardenAccess inc="yes" />
+		<vineyardTour inc="yes" extraCharge="50">
+			Adelaide Hills - Half-day wine tasting tour
+		</vineyardTour>
+	</room>
+
+	<room>
+		<name>Eastern Rosella</name>
+		<people capacity="3" />
+		<cost perNight="250" />
+		<location story="ground" />
+		<photo_file>images/luxuryRoom1.jpg</photo_file>
+		<guest_reviews_link>https://www.tripadvisor.com.au/</guest_reviews_link>
+		<description>
+			Imagine opening the door to your suite to see what luxury really looks like; four poster
+			beds, quality linen and tasteful furnishings. Well these rooms are for you then. With
+			private courtyards, water features, and luxury day beds that will make for that perfect country escape. 
+			Each suite is equipped with their own stunning &PB; that exudes quality and comfort. Also included is
+			an all-day wine tasting tour. Comes with &AC;.
+		</description>
+		<wifi inc="yes" />
+		<fourPostBed inc="yes" />				
+		<gardenAccess inc="yes" />
+		<vineyardTour inc="yes" extraCharge="100">
+			Adelaide Hills - All-day wine tasting tour
+		</vineyardTour>
+	</room>
+</rooms>

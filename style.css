@@ -1,0 +1,352 @@
+/*
+ * @file 	style.css
+ * 
+ * style.css provides all necessary CSS styling code to present index.html,survey.html and styles.xsl in an appealing fashion
+ * 
+ * NOTE
+ * 	-	Wherever possible sizing has been completed with relative sizing. ie: %.
+ * 		this allows the webpage to be displayed on multiple devices.
+ *  -	All code is fairly self explanatory, if you have any queries email me at brad.c.turner1997@gmail.com
+ *	-	Best viewed in firefox or chrome, however there is a cache issue with firefox loading images from a css
+ *		file where; if clicked on the image will show or if the page is reloaded with the image on screen again it
+ *		will show. I dont know why, neither does the internet supoosedly.
+ * @author	Bradley Turner
+ * @created	24/08/16
+ *
+ * @last modified	09/09/16
+ *
+*/ 
+
+html,body{
+	/* Resets the margins and padding to 0, also stretches the size to fit the screen  */
+    margin: 0;
+    padding: 0;
+	height:100%;
+	width:100%;
+	
+	/*Sets the documents font and size*/
+	font: 16px/1.8 "Lato", sans-serif;
+}
+
+.parallaxScroll{
+	min-height: 100%;
+	background-image: url('images/victorianHouse.jpg');		/*Sourced from http://www.hdwallpaperup.com/2015/02/victorian-house/ */ 
+	background-repeat: no-repeat;
+	background-attachment:fixed; /*property that creates the effect*/
+	background-size:cover;
+	background-position: center;
+	opacity: 0.80;
+}
+#instruction{
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	text-align: center;
+	display: block;
+	color: #fff;
+	
+	-webkit-animation-name: scrollD; 				/* Chrome, Safari*/
+    -webkit-animation-duration: 1.5s; 				/* Chrome, Safari*/
+	-webkit-animation-iteration-count: 5; 			/* Chrome, Safari*/
+	-webkit-animation-timing-function: ease-in-out; /* Chrome, Safari*/
+	-webkit-animation-delay: 4s; 					/* Chrome, Safari*/
+    animation-name: scrollD;
+    animation-duration: 1.5s;
+	animation-iteration-count: 5;
+	animation-delay: 4s;
+	animation-timing-function: ease-in-out;
+}
+/* Animation to make the words "SCROLL DOWN" hover up and down
+ * Syntax found at http://www.w3schools.com/css/css3_transitions.asp Altered to fit needs by Bradley Turner
+ * Safari and Chrome*/
+@-webkit-keyframes scrollD {
+    0%   {top:50%;}
+	25%	 {top:49.5%;}
+    50%  {top:50%;}
+    100% {top:50%;}
+}
+/* Standard syntax */
+@keyframes scrollD {
+    0%   {top:50%;}
+	25%	 {top:49.5%;}
+    50%  {top:50%;}
+    100% {top:50%;}
+}
+
+
+#caption{
+	background-color: #333;
+	font-size: 20px;
+	padding: 15px;
+	letter-spacing: 8px;
+	
+}
+#captionText {
+	text-decoration:none;
+	color:#fff;	
+}
+
+
+
+/* Main body of the webpage */
+.middle{
+	height: auto;
+	color: #777;
+	/*compulsory left margin of 1cm. For unity, included is a right margin of 1cm*/
+	margin-left: 1cm;
+	margin-right: 1cm;
+	text-align:justify;
+	
+	padding-left:5%;
+	padding-right:5%;
+	
+}
+#pageTitle{
+	margin-bottom:20.2px;
+	text-transform: uppercase;
+	text-align: center;
+	font-size:60px;
+	color: #333;
+}
+
+/* #nav is for the navigation bar following the main page heading */
+.navContainer{
+	width=100%;
+}
+.navContainer li{
+	display: inline-block;
+	width: 200px;
+	margin: 5px 40px;
+	padding: 0px;
+}
+.navContainer li a{
+	display: block;
+	text-decoration:none;
+	padding:6.5px 0;
+}
+.navPane{
+	list-style-type:none;
+	text-align: center;
+	padding-left:0;
+	margin: 0;
+}
+/*Following code is in regards to the styling of the top navigation pane in index.html*/
+#navTop{
+	margin-bottom:150px;
+}
+
+#navTop li{
+	background-color:#444;
+	border-radius: 8px;
+}
+#navTop li:hover{
+	background-color:#fff;
+}
+
+#navTop li a{
+	font-size:20px;/*20px*/
+	color:#fff;
+}
+#navTop li a:hover{
+	font-size:24px;/*24px*/
+	color: #444;
+	border-style: solid;
+	border-radius: 8px;
+	padding: 0;
+}
+#navTop li a:visited{
+	color: #AAA;
+	background-color: #fff;
+}
+/*Following code is in regards to the styling of the bottom navigation pane in index.html*/
+#navBottom{
+	color: #777;
+}
+#navBottom li{
+	width: 190px;
+	margin: 5px 10px;
+}
+#navBottom li a{
+	color: #333;
+
+}
+#navBottom li a:visited{
+	color: #777;
+}
+#navBottom li a:hover{
+	font-size: 18px;
+	text-shadow: 1px 1px #AAA;
+}
+
+
+/*Used to add whitespace in index.html*/
+#briefDescription{
+	margin-bottom: 50px;
+}
+
+/* .subtitles class effects the h2 headings on index.html */
+.subtitles{
+	display: block;
+	text-transform: uppercase;
+	text-align: center;
+	text-decoration: underline;
+	background-color: #444;
+	color: #fff;
+	margin-bottom:0;
+	font-weight: normal;
+	
+}
+.subtitles a{	
+	padding:7px 0;
+}
+.subtitles a:hover{
+	/* hovering inverts the text/background colours, adding a border*/
+	font-size:1.2em;
+	background-color:#fff;
+	color: #444;
+	border-style: solid;
+	padding:0;
+}
+.subtitles a:visited{
+	/* Changes the links colour to grey rather than white */
+	color: #AAA;
+	background-color: #444;
+	
+}
+
+
+
+
+/* .rooms class used to simplify repetition of code for both the luxury and budget accommodation types */
+.rooms{
+	margin:0;
+	padding: 0;
+	list-style-type: none;
+	display: block;
+	
+}
+.rooms li{
+	padding-top:25px;
+	display: inline-block;
+	height:300px;
+}
+.rooms li p{
+	padding-top:5%;
+	vertical-align:middle;
+}
+.rooms li img{
+	float:left;
+	height:300px;
+	width: 432.5px;
+	padding-right:25px;
+}
+#budget{
+	margin: 50px 0;
+}
+
+#finalP{
+	/* Due to the #middle automatically setting the size, this finalP margin 
+	creates a small strip of whitespace following the final lines of text */
+	margin-bottom: 50px;
+}
+#greeting{
+	color: #444;
+	text-align: center;
+}
+
+
+#smallHeader, #smallBottom{
+	/* overrules the class .parallaxScroll to resize a small parallax scrolling
+	strip to first of all add whitespace and continuity but also create the illusion of a background */
+	min-height:200px;
+	display:block;
+}
+
+.reviewForm h3{
+	margin-bottom:0;
+}
+.reviewForm hr{
+	margin-top: 4px;
+}
+.formDisplay li{
+	list-style-type:none;
+	display: block;
+	padding-top: 30px;
+}
+.formDisplay input[type=text]{
+	width:235px;
+}
+.number{
+	text-align: center;
+}
+#durationContainer{
+	display: inline-block;
+	width: 235px;
+}
+#durationContainer input[type=number]{
+	width: 150px;
+}
+
+#Duration{
+	width:235px;
+}
+
+.formDisplay li label{
+	display: inline-block;
+	width: 350px;
+	text-align: right;
+	padding-right: 20px;
+}
+.asterik{
+	color: red;
+	padding-right: 2px;
+}
+#buttons button{
+	margin: 30px 20px 5px;
+	padding: 0 20px;
+	background-color:#444;
+	border-radius: 8px;
+	border: none;
+	text-align: center;
+	font: 16px/1.8 "Lato", sans-serif;
+	color: #fff;
+	width: 200px;
+	cursor: pointer;
+}
+.formDisplay select{
+	width:235px;
+}
+
+.footer{
+	
+	width:100%;
+	position:fixed;
+	bottom:0;
+	height:20px;
+	text-align:right;
+	
+	/* Gradient from transparent to non-transparent */
+	/* Syntax found at http://www.w3schools.com/css/css3_gradients.asp amended to fit needs by Bradley Turner*/
+	background: white; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(left, rgba(255,255,255,0),rgba(255,255,255,0),rgba(255,255,255,0.45)); /*Safari 5.1-6*/
+	background: -o-linear-gradient(right, rgba(255,255,255,0),rgba(255,255,255,0),rgba(255,255,255,0.45)); /*Opera 11.1-12*/
+	background: -moz-linear-gradient(right, rgba(255,255,255,0),rgba(255,255,255,0),rgba(255,255,255,0.45)); /*Fx 3.6-15*/
+	background: linear-gradient(to right,  rgba(255,255,255,0),rgba(255,255,255,0), rgba(255,255,255,0.45)); /*Standard*/
+	
+}
+#footer span{
+	padding-right:20px;
+}
+#roomPhoto img{
+	width: 100%;
+}
+.roomDisplay{
+	border-spacing: 50px 25px; 
+	color: #777;
+}
+.roomDisplay td{
+	vertical-align: top;
+}
+.inclusions{
+	margin: 0;
+}

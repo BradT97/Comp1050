@@ -1,0 +1,427 @@
+<!--
+	File:					survey.html
+	
+	Review page of the website Rosella Estate, validates form inputs using javascript and emails to c3259038.
+	Best viewed in chrome, and firefox, however firefox has issues with caching images from css files. This usually
+	fixes itself if the user clicks where the image is supposed to be or refreshes the page with the image on screen.
+	
+	Developer:				Bradley Turner
+	Date of Creation:		12/10/16
+	
+	Last Modified:			19/10/16
+-->
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<meta charset="UTF-8">
+		<title>Review Rosella Estate</title>
+		
+		
+		<script language="Javascript"> 
+		<!-- Comment hides scripting from older browsers
+		function validate()
+		{
+			/*
+				function validates the form before it is emailed.
+				it calls smaller functions to acheive this.
+				this function only tests their cases.
+			*/
+			//variable declarations
+			var validateForm;
+			var validFirstName;			//boolean
+			var validLastName;			//boolean
+			var validEmail;				//boolean
+			var validDOB;				//boolean
+			var validContinent;			//boolean
+			var validReview				//integer
+			
+			validateForm	= true;
+			validFirstName	= validate_FName();
+			validLastName	= validate_LName();
+			validEmail		= validate_Email();
+			validDOB 		= validate_DOB();
+			validContinent 	= validate_Continent();
+			validReview		= validate_Review();
+			
+			
+			if ((validFirstName == false) || (validLastName == false) || (validEmail == false) || (validDOB == false) || (validContinent ==false)){
+				alert("Please correct the supllied data marked in red.");
+				console.log("Validation failed");
+				validateForm = false;
+			}
+			else if (validReview == -1){
+				alert("No data was supplied in your review, please rate your stay =)");
+				validateForm = false;
+			}
+			else if (validReview == 1){
+				alert("An invalid input was detected. Please try again.");
+				validateForm = false;
+			}
+			else {
+				alert("Thank you for taking the time to leave us a review!");
+			}
+			
+			return validateForm;
+		}
+		
+		//-->
+		</script>
+		<script language="Javascript">
+		<!--
+			function validate_FName(){
+				//Private Variables
+				var exit; 										//boolean
+				var $fname 		= document.review.fName.value;		//string
+				var nameRegex 	= /^[a-zA-Z-']+$/
+				/*
+				RegEx only really accommodates for english symbols
+				other symbols for names like mary-ann etc
+				*/
+				
+				exit			= nameRegex.test($fname);
+				
+				
+				//if the firstname textbox is empty
+				if (exit == false){
+					//change the associated label colour to red
+					document.getElementById("lbl_fName").style.color = "red";
+					console.log("Invalid firstname detected");
+				}
+				else{
+					//resets labels colour
+					document.getElementById("lbl_fName").style.color = "#777";
+				}
+				
+				//returns the exit status; indicating whether the fields were validated or not.
+				return exit;
+			}
+		//-->
+		</script>
+		<script language="Javascript">
+		<!--
+			function validate_LName(){
+				//Private Variables
+				var exit; 										//boolean
+				var $lname 		= document.review.lName.value;	//string
+				var nameRegex 	= /^[a-zA-Z-']+$/
+				/*
+				RegEx only really accommodates for english symbols
+				other symbols for names like john f. kennedy jr. etc
+				*/
+				
+				exit			= nameRegex.test($lname);
+				
+				//if the firstname textbox is empty
+				if (exit == false){
+					//change the associated label colour to red
+					document.getElementById("lbl_lName").style.color = "red";
+					console.log("Invalid surname detected");
+				}
+				else{
+					//resets labels colour
+					document.getElementById("lbl_lName").style.color = "#777";
+				}
+				
+				//returns the exit status; indicating whether the fields were validated or not.
+				return exit;
+			}
+		//-->
+		</script>
+		<script language="Javascript">
+		<!--
+			function validate_Email(){
+				//Private Variables
+				var $email  	= document.review.eMail.value;		//string
+				
+				//RegEx sourced from http://stackoverflow.com/questions/46155/validate-email-address-in-javascript
+				var emailRegex	= /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				var exit 		= emailRegex.test($email);			//boolean
+				
+				if (exit == false){
+					//change the associated label colour to red
+					document.getElementById("lbl_eMail").style.color = "red";
+				}
+				else{
+					//resets labels colour
+					document.getElementById("lbl_eMail").style.color = "#777";
+				}
+				
+				//returns the exit status; indicating whether the fields were validated or not.
+				return exit;
+			}
+		//-->
+		</script>
+		<script language="Javascript">
+		<!--
+			function validate_DOB(){
+				//Private Variables
+				var exit			= true;									//boolean
+				var current_year 	= (new Date()).getFullYear();			//integer
+				var $dob 			= document.review.y.value;				//string
+				var yearRegex		=	/\d\d\d\d/							//four digits regex
+				
+				
+				
+				try {
+					var dob 		= parseInt($dob);						//integer
+				}
+				catch(err){
+					console.log("Dob -- no input or alphabetical characters detected")
+				}
+				finally{
+					if (yearRegex.test($dob) == false){
+						exit = false;
+						console.log("DOB format does not match regex");
+					}
+					
+					//checks if the date supplied > current year, or if it is less than the current year - 125 years (oldest person to live)
+					if ((dob > current_year) || (dob < (current_year -125))){
+						console.log("Invalid birth-year exceeds range");
+						exit = false;
+					}
+					
+					if (exit == false){
+						document.getElementById("lbl_dob").style.color = "red";
+					}
+					else{
+						//resets labels colour
+						document.getElementById("lbl_dob").style.color = "#777";
+					}
+					//returns the exit status; indicating whether the fields were validated or not.
+					return exit;
+				}
+				
+				
+				
+				
+				
+			}
+		//-->
+		</script>
+		<script language="Javascript">
+		<!--
+			function validate_Continent(){
+				//Public Variables
+				var exit		= true;										//boolean
+				var x 			= document.getElementById("continents");	//object
+				var $usrSelect 	= x.options[x.selectedIndex].value;			//string
+				
+				
+				
+				//if the drop down list for continents is unselected
+				if ($usrSelect == "0"){
+					document.getElementById("lbl_continents").style.color = "red";
+					console.log("Invalid continent");
+					exit = false;
+				}
+				else{
+					//resets labels colour
+					document.getElementById("lbl_continents").style.color = "#777";
+				}
+				
+				
+				//returns the exit status; indicating whether the fields were validated or not.
+				return exit;
+			}
+		//-->
+		</script>
+		<script language="Javascript">
+		<!--
+			function validate_Review(){
+				var numberRegex = /^[+]?[0-9]+$/;
+				var exit 		= 0;								//used as a boolean, 0 for validated, 1 for invalid input, -1 for no input
+				var x 			= document.getElementById("rooms");	//object
+				var $roomSelect = x.options[x.selectedIndex].value;	//string
+				var $stayLength = document.review.duration.value;	//string
+				var $totalStays = document.review.numStays.value;	//string
+				var $comment 	= document.review.comments.value;	//string
+				
+				
+				
+				
+				
+				/*
+				if statements catches no input, this could be done in the regex however,
+				//if it returned true then it would set the matching labels text to red whereas
+				i only want it to turn red on invalid inputs not empty inputs
+				*/
+				if ($stayLength != ""){
+					if (numberRegex.test($stayLength) == false){
+						document.getElementById("lbl_stayLength").style.color = "red";
+						console.log("invalid length of stay");
+						exit = 1;
+					}
+					else{
+						document.getElementById("lbl_stayLength").style.color = "#777";
+					}
+				}
+				
+				if ($totalStays != ""){
+					if (numberRegex.test($totalStays) == false){
+						document.getElementById("lbl_numStays").style.color = "red";
+						console.log("invalid number of stays");
+						exit = 1;
+					}
+					else {
+						document.getElementById("lbl_numStays").style.color = "#777";
+					}
+				}
+				
+				
+				if (($roomSelect == "0") && ($stayLength == "") && ($totalStays == "") && ($comment == "")){ 
+					console.log("no data in review");
+					exit = -1;
+				}
+				
+				//returns the exit status; indicating whether the fields were validated or not.
+				return exit;
+			}
+		//-->
+		</script>
+		<script language="Javascript">
+		<!--
+			function resetForm(){
+				//should the user clear the form this will reset all label names to their original colour
+				document.getElementById("lbl_stayLength").style.color = "#777";
+				document.getElementById("lbl_numStays").style.color = "#777";
+				document.getElementById("lbl_continents").style.color = "#777";
+				document.getElementById("lbl_dob").style.color = "#777";
+				document.getElementById("lbl_eMail").style.color = "#777";
+				document.getElementById("lbl_lName").style.color = "#777";
+				document.getElementById("lbl_fName").style.color = "#777";
+			}
+		//-->
+		</script>
+	</head>
+	<body>
+		<!-- Creates whitespace at the top of the page  -->
+		<div class="parallaxScroll" id="smallHeader" style="min-height:400px;"></div>
+		
+		<!-- Div to seperate text from whitespace  -->
+		<div class="middle">
+			<h1 id="pageTitle">review rosella estate</h1>
+			
+			
+			<!-- Follows the page's title providing navigational links  -->
+			<div class="navContainer">
+				<ul class="navPane" id="navTop">
+					<li><a href="index.html#down">Home</a></li>
+					<li><a href="http://www.blogtyrant.com/best-about-us-pages/">About Us</a></li>
+					<!--realisitcally this doesnt need to do anything as this page is the active page-->
+					<li><a href="survey.html">Leave a Review</a></li> 
+				</ul>
+			</div>
+			
+			
+			<h2 id="greeting">Your first-hand experiences help other guests. Thanks!</h2>
+			
+			<!-- form allowing for a review, emails form once validated -->
+			<div id="formContainer">
+				<form class="reviewForm" name="review" action="mailto:c3259038@uon.edu.au" method="post" enctype="text/plain" onsubmit="return validate()"> 
+					<h3>Contact Information</h3>
+					<hr>
+					<ul class="formDisplay"> <!--Mandatory Aspects of the form that need to be completed-->
+						<li><!-- Firstname input  -->
+							<label id="lbl_fName"><span class="asterik">&#42;</span>First Name:</label>
+							<input type="text" name="fName" maxlength="20">
+						</li>
+						<li><!-- Surname input  -->
+							<label id="lbl_lName"><span class="asterik">&#42;</span>Surname:</label>
+							<input type="text" name="lName" maxlength="20">
+						</li>
+						<li><!-- Email input  -->
+							<label id="lbl_eMail"><span class="asterik">&#42;</span>Email:</label>
+							<input type="text" name="eMail">
+						</li>
+						<li><!-- DOB input  -->
+							<label id="lbl_dob"><span class="asterik">&#42;</span>Year of birth:</label>
+							<input type="text" name="y" class="number" placeholder="YYYY">
+						</li>
+						<li><!-- Continent input  -->
+							<label id="lbl_continents"><span class="asterik">&#42;</span>Continent of Origin:</label>
+							<!--Dropdown menu with default value of "--Please Select--"	-->
+							<select id="continents" style="width:241px;text-align:center;">
+								<option value="0" selected disabled> -- Please Select -- </option>
+								<option value="1">Africa</option>
+								<option value="2">Antarctica</option>
+								<option value="3">Asia</option>
+								<option value="4">Australia</option>
+								<option value="5">Europe</option>
+								<option value="6">North America</option>
+								<option value="7">South America</option>
+							</select>
+						</li>
+					</ul>
+					<h3>Review your stay (optional)</h3>
+					<hr>
+					<ul class="formDisplay">	<!-- Non mandatory form inputs-->
+						<li><!-- Room input -->
+							<label>In which room were you accommodated?</label>
+							<select id="rooms" style="width:241px;text-align:center;">
+								<option value="0" selected disabled> -- Please Select -- </option>
+								<option value="1">Eastern Rosella</option>
+								<option value="2">Northern Rosella</option>
+								<option value="3">Western Rosella</option>
+								<option value="4">Crimson Rosella</option>
+								<option value="5">Green Rosella</option>
+								<option value="6">Pale-Beaked Rosella</option>
+							</select>
+						</li>
+						<li><!-- Stay duration -->
+							<label id="lbl_stayLength">How many nights did you stay for?</label>
+							<input type="text" name="duration">
+						</li>
+						<li><!-- Date of stay -->
+							<label id="lbl_numStays">How many times have you stayed here before?</label>
+							<input type="text" name="numStays">
+						</li>
+						<li><!-- Stay rating -->
+							<label>How would you rate your stay?</label>
+
+						</li>
+						<li><!-- Comments -->
+							<label>Any other comments about your stay?</label>
+								<textarea name="comments" rows="5" cols="30" style="width:241px;"></textarea>
+							</input>
+						</li>
+					</ul>
+					
+					<!--Div container allows positioning of buttons-->
+					<div id="buttons" style="text-align:center; width:100%; margin-bottom:20px;">
+					
+						<button type="submit">Submit Your Review</button>
+						<button type="reset" onclick="resetForm()">Clear</button>
+					</div>
+					
+					<label style="font-size:14px;"><span class="asterik">&#42;</span> indicates mandatory fields</label>
+					
+					<hr>
+				</form>
+			</div>
+		</div>
+		
+		<!-- Creates another navigation pane at the bottom of the form again providing links  -->
+		<div class="navContainer" id ="navBottom">
+			<ul class="navPane">
+				<li><a href="index.html#down">Home</a></li>
+				<li><a href="budget.xml">Budget Suites</a></li>
+				<li><a href="luxury.xml">Luxury Suites</a></li>
+				<li><a href="http://www.blogtyrant.com/best-about-us-pages/">About Us</a></li>
+				<li><a href="http://www.blogtyrant.com/best-contact-us-pages/">Contact</a></li>
+				<li><a href="https://media.termsfeed.com/pdf/terms-and-conditions-template.pdf">Terms and Conditions</a></li>
+				<li><a href="https://www.visser.com.au/blog/generic-privacy-policy-for-australian-websites/">Privacy Policy</a></li>
+			</ul>
+		</div>	
+		
+		<!-- Creates another strip of whitespace to mimic index.html  -->
+		<div class="parallaxScroll" id="smallBottom"></div>
+		
+		<!-- Footer to display copyright  -->
+		<div class="footer">
+			<span style="vertical-align:top;padding-right:20px;font-size:12px;">&copy 2016 - Bradley Turner, brad.c.turner1997@gmail.com</span>
+		</div>
+	</body>
+</html>
